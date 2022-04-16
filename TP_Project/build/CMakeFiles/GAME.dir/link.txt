@@ -1,0 +1,1 @@
+/usr/bin/c++  -std=c++17 -rdynamic CMakeFiles/GAME.dir/interactor.cpp.o -o ../bin/GAME  -Wl,-rpath,/home/krasav4ik/TP_Project/TP_Project/lib ../lib/libbot.so ../lib/libfield_builder.so ../lib/libfield.so ../lib/libship.so 

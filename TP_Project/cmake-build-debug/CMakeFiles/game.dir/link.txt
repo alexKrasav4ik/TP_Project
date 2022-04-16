@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/game.dir/interactor.cpp.o -o game 

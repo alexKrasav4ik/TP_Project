@@ -1,0 +1,3 @@
+/home/krasav4ik/TP_Project/TP_Project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/krasav4ik/TP_Project/TP_Project/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/krasav4ik/TP_Project/TP_Project/cmake-build-debug/CMakeFiles/game.dir

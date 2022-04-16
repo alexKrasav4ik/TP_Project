@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC  -std=c++17 -std=c++17 -shared -Wl,-soname,libbot.so -o ../../lib/libbot.so CMakeFiles/bot.dir/bot.cpp.o  -Wl,-rpath,/home/krasav4ik/TP_Project/TP_Project/lib ../../lib/libfield_builder.so ../../lib/libfield.so ../../lib/libship.so 

@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/krasav4ik/TP_Project/TP_Project/Objects/Field.h
+iostream
+-
+vector
+-
+
+/home/krasav4ik/TP_Project/TP_Project/src/Field.cpp
+../Objects/Field.h
+/home/krasav4ik/TP_Project/TP_Project/Objects/Field.h
+

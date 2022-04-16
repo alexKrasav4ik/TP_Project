@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "Objects/Field_builder.h"
-#include "My_Bot/bot.h"
+#include "Objects/bot.h"
 
 Field user_field;
 std::vector<Ship> user_fleet;
@@ -9,6 +9,9 @@ std::vector<Ship> user_fleet;
 Bot krasav4ik;
 Field bot_field;
 std::vector<Ship> bot_fleet;
+
+std::vector<std::pair<int, int> > bombs;
+
 
 Ship cin_coords_of_ship() {
 	char a, b, c, d;
@@ -32,15 +35,40 @@ namespace prebattle {
 	void inserting_new_ship() {
 		cout_cur_field();
 		std::cout << "Введите координаты двух крайних клеток какого-нибудь корабля:\n";
-		Ship ship(cin_coords_of_ship());
-		user_fleet.push_back(ship);
-		Builder::build_ship(ship, user_field);
-		for (int i = 0; i < 50; i++)
-			std::cout << "\n";
+		while (true) {
+			try {
+				Ship ship(cin_coords_of_ship());
+				user_fleet.push_back(ship);
+				Builder::build_ship(ship, user_field);
+				for (int i = 0; i < 50; i++)
+					std::cout << "\n";
+				break;
+			}
+			catch (...) {
+				std::cout << "Упс! Неверные координаты, введите еще раз\n";
+			}
+		}
+	}
+
+
+	void inserting_new_bomb() {
+		std::cout << "Введите координаты бомбы:\n";
+		char a, b;
+		while (true) {
+			std::cin >> a >> b;
+			if (a < 'A' || a > 'J' || b < '0' || b > '9')
+				std::cout << "Неверные координаты, введите повторно\n";
+			else
+				break;
+		}
+		Builder::build_bomb(a - 'A', b - '0', bombs);
 	}
 
 	void prebattle_activities() {
 		std::cout << "Привет! Это игра морской бой! Надеюсь, что правила именно этой версии Вам известны, поэтому сразу приступим к заполнению поля:\n";
+		std::cout << "Вы можете поставить 4 мины, которые возможно нанесут урон кораблям противника:\n";
+		for (int step = 0; step < 4; step++)
+			inserting_new_bomb();
 		for (int step = 0; step < 3; step++)
 			inserting_new_ship();
 		std::cout << "Отлично! Теперь Ваше поле выглядит так:\n";
@@ -57,13 +85,20 @@ namespace prebattle {
 namespace battle {
 	Field battle_field;
 
-	void user_iteration() {
+	void user_iteration(int coor1, int coor2) {
 		while (true) {
 			std::cout << "Ваш ход, выберите клетку для удара:\n\n" << battle_field << "\n\n";
 			char a, b;
-			std::cin >> a >> b;
-			int row = a - 'A';
-			int col = b - '0';
+			int row, col;
+			if (coor1 == -1) {
+				std::cin >> a >> b;
+				row = a - 'A';
+				col = b - '0';
+			}
+			else {
+				row = coor1;
+				col = coor2;
+			}
 			int max_damage = 0;
 			Ship killed_ship;
 			for (size_t i = 0; i < bot_fleet.size(); i++) {
@@ -156,8 +191,10 @@ namespace battle {
 	}	
 
 	void battle_activities() {
+		for (auto el : bombs)
+			user_iteration(el.first, el.second);
 		while (!bot_fleet.empty() && !user_fleet.empty()) {
-			user_iteration();
+			user_iteration(-1, -1);
 			if (bot_fleet.empty()) {
 				std::cout << "Ура! Весь вражеский флот уничтожен, это победа!\n";
 				return;
