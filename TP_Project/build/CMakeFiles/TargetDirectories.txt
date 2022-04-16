@@ -1,9 +1,0 @@
-/home/krasav4ik/TP_Project/TP_Project/build/CMakeFiles/rebuild_cache.dir
-/home/krasav4ik/TP_Project/TP_Project/build/CMakeFiles/edit_cache.dir
-/home/krasav4ik/TP_Project/TP_Project/build/CMakeFiles/GAME.dir
-/home/krasav4ik/TP_Project/TP_Project/build/src/CMakeFiles/edit_cache.dir
-/home/krasav4ik/TP_Project/TP_Project/build/src/CMakeFiles/rebuild_cache.dir
-/home/krasav4ik/TP_Project/TP_Project/build/src/CMakeFiles/bot.dir
-/home/krasav4ik/TP_Project/TP_Project/build/src/CMakeFiles/field_builder.dir
-/home/krasav4ik/TP_Project/TP_Project/build/src/CMakeFiles/field.dir
-/home/krasav4ik/TP_Project/TP_Project/build/src/CMakeFiles/ship.dir
