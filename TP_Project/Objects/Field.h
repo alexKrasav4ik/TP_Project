@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 
+#pragma once
+
 //Это игровое поле
 struct Field {
     std::vector<std::vector<char> > field = std::vector<std::vector<char> >(10, std::vector<char>(10, '.'));
